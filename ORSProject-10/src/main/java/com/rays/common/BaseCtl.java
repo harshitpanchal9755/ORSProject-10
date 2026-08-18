@@ -125,7 +125,7 @@ public class BaseCtl<F extends BaseForm, T extends BaseDto, S extends BaseServic
 			for (String id : ids) {
 				baseService.delete(Long.parseLong(id), userContext);
 			}
-			
+
 			T dto = (T) form.getDto();
 
 			List<T> list = baseService.search(dto, Integer.parseInt(pageNo), pageSize, userContext);

@@ -21,7 +21,7 @@ public abstract class BaseDaoImpl<T extends BaseDto> implements BaseDaoInt<T> {
 		this.entityManager = entityManager;
 	}
 
-	public abstract Class<T> getDTOClass();
+	public abstract Class<T> getDtoClass();
 
 	protected abstract List<Predicate> getWhereClause(T dto, CriteriaBuilder builder, Root<T> qRoot);
 
@@ -62,13 +62,13 @@ public abstract class BaseDaoImpl<T extends BaseDto> implements BaseDaoInt<T> {
 
 	@Override
 	public T findByPk(long pk, UserContext userContext) {
-		T dto = entityManager.find(getDTOClass(), pk);
+		T dto = entityManager.find(getDtoClass(), pk);
 		return dto;
 	}
 
 	@Override
 	public T findByUniqueKey(String attribute, Object val, UserContext userContext) {
-		Class<T> dtoClass = getDTOClass();
+		Class<T> dtoClass = getDtoClass();
 
 		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
 
@@ -76,9 +76,9 @@ public abstract class BaseDaoImpl<T extends BaseDto> implements BaseDaoInt<T> {
 
 		Root<T> qRoot = cq.from(dtoClass);
 
-		Predicate codition = builder.equal(qRoot.get(attribute), val);
+		Predicate condition = builder.equal(qRoot.get(attribute), val);
 
-		cq.where(codition);
+		cq.where(condition);
 
 		TypedQuery<T> query = entityManager.createQuery(cq);
 
@@ -96,9 +96,9 @@ public abstract class BaseDaoImpl<T extends BaseDto> implements BaseDaoInt<T> {
 
 		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
 
-		CriteriaQuery<T> cq = builder.createQuery(getDTOClass());
+		CriteriaQuery<T> cq = builder.createQuery(getDtoClass());
 
-		Root<T> qRoot = cq.from(getDTOClass());
+		Root<T> qRoot = cq.from(getDtoClass());
 
 		cq.select(qRoot);
 

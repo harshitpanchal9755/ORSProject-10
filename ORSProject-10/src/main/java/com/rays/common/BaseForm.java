@@ -1,7 +1,5 @@
 package com.rays.common;
 
-import java.sql.Timestamp;
-
 public class BaseForm {
 	
 	protected Long id;
@@ -34,7 +32,7 @@ public class BaseForm {
 			return null;
 		}
 	
-		public <T extends BaseDto> T initDTO(T dto) {
+		public <T extends BaseDto> T initDto(T dto) {
 			System.out.println("id => base dto => " + id);
 			if (id != null && id > 0) {
 				dto.setId(id);

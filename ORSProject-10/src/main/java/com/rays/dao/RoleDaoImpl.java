@@ -20,7 +20,7 @@ import com.rays.dto.RoleDto;
 public class RoleDaoImpl extends BaseDaoImpl<RoleDto> implements RoleDaoInt{
 
 	@Override
-	public Class<RoleDto> getDTOClass() {
+	public Class<RoleDto> getDtoClass() {
 		return RoleDto.class;
 	}
 
